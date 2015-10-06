@@ -17,7 +17,7 @@
 >
     <testsuites>
         <testsuite name="Refinery29 Tests">
-            <directory>tests/</directory>
+            <directory>test/</directory>
         </testsuite>
     </testsuites>
     <filter>
