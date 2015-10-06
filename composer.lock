@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1bf197618c69a6271cf593d5272ac3ac",
-    "content-hash": "07618a2d0e37d268ab979c6ee439e929",
+    "hash": "c6d6368d2af418ce9c45de507d684cbb",
+    "content-hash": "bd9b7573e00fd338357ea28cefa44d66",
     "packages": [],
     "packages-dev": [
         {
@@ -126,12 +126,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "6fd5cb64fade985dc189e6601c20e743ac846afd"
+                "reference": "59ed377ef822e1224e198ab17adaf86d015de685"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/59ed377ef822e1224e198ab17adaf86d015de685",
-                "reference": "6fd5cb64fade985dc189e6601c20e743ac846afd",
+                "reference": "59ed377ef822e1224e198ab17adaf86d015de685",
                 "shasum": ""
             },
             "require": {
@@ -177,7 +177,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2015-09-21 20:15:07"
+            "time": "2015-09-29 18:01:06"
         },
         {
             "name": "guzzle/guzzle",
@@ -1682,9 +1682,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "fabpot/php-cs-fixer": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
