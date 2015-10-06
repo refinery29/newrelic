@@ -2,7 +2,7 @@
     "name": "refinery29/newrelic",
     "description": "Provides a wrapper around the NewRelic agent",
     "type": "library",
-    "license": "MIT",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Andreas Möller",
