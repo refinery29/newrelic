@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c6d6368d2af418ce9c45de507d684cbb",
-    "content-hash": "bd9b7573e00fd338357ea28cefa44d66",
+    "hash": "6e4f5657cda34615cc02209c8eae6310",
+    "content-hash": "db0483b725eb78d5db52102c6f1ac144",
     "packages": [],
     "packages-dev": [
         {
@@ -791,30 +791,30 @@
         },
         {
             "name": "refinery29/php-cs-fixer-config",
-            "version": "0.1.5",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/refinery29/php-cs-fixer-config.git",
-                "reference": "f90e5958991a568e9352119a66b7551b1177bdb0"
+                "reference": "020446105f57cf027b4ccbde6b3fd1089ea3228f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/refinery29/php-cs-fixer-config/zipball/f90e5958991a568e9352119a66b7551b1177bdb0",
-                "reference": "f90e5958991a568e9352119a66b7551b1177bdb0",
+                "url": "https://api.github.com/repos/refinery29/php-cs-fixer-config/zipball/020446105f57cf027b4ccbde6b3fd1089ea3228f",
+                "reference": "020446105f57cf027b4ccbde6b3fd1089ea3228f",
                 "shasum": ""
             },
             "require": {
-                "fabpot/php-cs-fixer": "2.0.*@dev",
+                "fabpot/php-cs-fixer": "2.0.*-dev",
                 "php": ">=5.4"
             },
             "require-dev": {
-                "codeclimate/php-test-reporter": "^0.1.2",
+                "codeclimate/php-test-reporter": "0.2.0",
                 "phpunit/phpunit": "^4.8.2"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Refinery29\\CS\\Config\\": "src/"
+                    "Refinery29\\CS\\Config\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -828,7 +828,7 @@
                 }
             ],
             "description": "Provides a configuration for fabpot/php-cs-fixer, used within Refinery29.",
-            "time": "2015-09-14 12:18:40"
+            "time": "2015-10-02 09:33:03"
         },
         {
             "name": "satooshi/php-coveralls",
