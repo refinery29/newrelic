@@ -17,7 +17,7 @@ Add this to your `composer.json`:
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:refinery29/doctrine-service-provider"
+            "url": "git@github.com:refinery29/newrelic"
         }
     ]
 }
