@@ -1,3 +1,5 @@
+it: cs test
+
 composer:
 	composer validate
 	composer install
