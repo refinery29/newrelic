@@ -1,29 +1,15 @@
 # newrelic
 
-[![Build Status](https://magnum.travis-ci.com/refinery29/newrelic.svg?token=WxyzZysW5QK9hWX3J4Yg&branch=master)](https://magnum.travis-ci.com/refinery29/newrelic)
-[![Code Climate](https://codeclimate.com/repos/56138bd8e30ba004d2001775/badges/ddbe21a804cf7cd8748a/gpa.svg)](https://codeclimate.com/repos/56138bd8e30ba004d2001775/feed)
-[![Test Coverage](https://codeclimate.com/repos/56138bd8e30ba004d2001775/badges/ddbe21a804cf7cd8748a/coverage.svg)](https://codeclimate.com/repos/56138bd8e30ba004d2001775/coverage)
-[![Dependency Status](https://www.versioneye.com/user/projects/561390b2a1933400150003a2/badge.svg?style=flat)](https://www.versioneye.com/user/projects/561390b2a1933400150003a2)
+[![Build Status](https://travis-ci.org/refinery29/newrelic.svg?branch=master)](https://travis-ci.org/refinery29/newrelic)
+[![Code Climate](https://codeclimate.com/github/refinery29/newrelic/badges/gpa.svg)](https://codeclimate.com/github/refinery29/newrelic)
+[![Test Coverage](https://codeclimate.com/github/refinery29/newrelic/badges/coverage.svg)](https://codeclimate.com/github/refinery29/newrelic/coverage)
 
 This repository provides a wrapper around the [New Relic PHP API](https://docs.newrelic.com/docs/agents/php-agent/configuration/php-agent-api), 
 inspired by [`intouch/newrelic`](https://github.com/In-Touch/newrelic).
  
 ## Installation
 
-Add this to your `composer.json`:
-
-```json
-{
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:refinery29/newrelic"
-        }
-    ]
-}
-```
-
-Run:
+Run
 
 ```
 $ composer require refinery29/newrelic
@@ -63,3 +49,15 @@ $agent = new Agent($handler);
 $agent->setAppname('Refinery29 API');
 $agent->nameTransaction('POST /entries');
 ```
+
+## Contributing
+
+Please have a look at [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Code of Conduct
+
+Please have a look at [CONDUCT.md](CONDUCT.md).
+
+## License
+
+This package is licensed using the MIT License.
