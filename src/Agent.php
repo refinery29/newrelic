@@ -12,7 +12,7 @@ namespace Refinery29\NewRelic;
 use Refinery29\NewRelic\Handler\DefaultHandler;
 use Refinery29\NewRelic\Handler\Handler;
 
-class Agent
+final class Agent implements AgentInterface
 {
     /**
      * @var Handler
@@ -24,12 +24,6 @@ class Agent
         $this->handler = $handler ?: new DefaultHandler();
     }
 
-    /**
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return mixed
-     */
     public function addCustomParameter($key, $value)
     {
         return $this->handle('newrelic_add_custom_parameter', [
@@ -38,11 +32,6 @@ class Agent
         ]);
     }
 
-    /**
-     * @param string $functionName
-     *
-     * @return mixed
-     */
     public function addCustomTracer($functionName)
     {
         return $this->handle('newrelic_add_custom_tracer', [
@@ -50,11 +39,6 @@ class Agent
         ]);
     }
 
-    /**
-     * @param bool $flag
-     *
-     * @return mixed
-     */
     public function backgroundJob($flag = true)
     {
         return $this->handle('newrelic_background_job', [
@@ -62,11 +46,6 @@ class Agent
         ]);
     }
 
-    /**
-     * @param bool $enable
-     *
-     * @return mixed
-     */
     public function captureParams($enable = true)
     {
         return $this->handle('newrelic_capture_params', [
@@ -74,12 +53,6 @@ class Agent
         ]);
     }
 
-    /**
-     * @param string $metricName
-     * @param mixed  $value
-     *
-     * @return mixed
-     */
     public function customMetric($metricName, $value)
     {
         return $this->handle('newrelic_custom_metric', [
@@ -88,27 +61,16 @@ class Agent
         ]);
     }
 
-    /**
-     * @return mixed
-     */
     public function disableAutoRum()
     {
         return $this->handle('newrelic_disable_autorum');
     }
 
-    /**
-     * @return mixed
-     */
     public function endOfTransaction()
     {
         return $this->handle('newrelic_end_of_transaction');
     }
 
-    /**
-     * @param bool $ignore
-     *
-     * @return mixed
-     */
     public function endTransaction($ignore = false)
     {
         return $this->handle('newrelic_end_transaction', [
@@ -116,11 +78,6 @@ class Agent
         ]);
     }
 
-    /**
-     * @param bool $includeTags
-     *
-     * @return mixed
-     */
     public function getBrowserTimingFooter($includeTags = false)
     {
         return $this->handle('newrelic_get_browser_timing_footer', [
@@ -128,11 +85,6 @@ class Agent
         ]);
     }
 
-    /**
-     * @param bool $includeTags
-     *
-     * @return mixed
-     */
     public function getBrowserTimingHeader($includeTags = false)
     {
         return $this->handle('newrelic_get_browser_timing_header', [
@@ -140,27 +92,16 @@ class Agent
         ]);
     }
 
-    /**
-     * @return mixed
-     */
     public function ignoreApdex()
     {
         return $this->handle('newrelic_ignore_apdex');
     }
 
-    /**
-     * @return mixed
-     */
     public function ignoreTransaction()
     {
         return $this->handle('newrelic_ignore_transaction');
     }
 
-    /**
-     * @param string $name
-     *
-     * @return mixed
-     */
     public function nameTransaction($name)
     {
         return $this->handle('newrelic_name_transaction', [
@@ -168,12 +109,6 @@ class Agent
         ]);
     }
 
-    /**
-     * @param string     $message
-     * @param \Exception $exception
-     *
-     * @return mixed
-     */
     public function noticeError($message, \Exception $exception = null)
     {
         return $this->handle('newrelic_notice_error', [
@@ -182,12 +117,6 @@ class Agent
         ]);
     }
 
-    /**
-     * @param string $name
-     * @param array  $attributes
-     *
-     * @return mixed
-     */
     public function recordCustomEvent($name, array $attributes)
     {
         return $this->handle('newrelic_record_custom_event', [
@@ -196,13 +125,6 @@ class Agent
         ]);
     }
 
-    /**
-     * @param string $name
-     * @param string $license
-     * @param bool   $xmit
-     *
-     * @return mixed
-     */
     public function setAppname($name, $license = '', $xmit = false)
     {
         return $this->handle('newrelic_set_appname', [
@@ -212,13 +134,6 @@ class Agent
         ]);
     }
 
-    /**
-     * @param string $user
-     * @param string $account
-     * @param string $product
-     *
-     * @return mixed
-     */
     public function setUserAttributes($user = '', $account = '', $product = '')
     {
         return $this->handle('newrelic_set_user_attributes', [
@@ -228,12 +143,6 @@ class Agent
         ]);
     }
 
-    /**
-     * @param string $appName
-     * @param string $license
-     *
-     * @return bool|mixed
-     */
     public function startTransaction($appName, $license = '')
     {
         return $this->handle('newrelic_start_transaction', [
