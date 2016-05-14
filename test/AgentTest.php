@@ -10,10 +10,25 @@
 namespace Refinery29\NewRelic\Test;
 
 use Refinery29\NewRelic\Agent;
+use Refinery29\NewRelic\AgentInterface;
 use Refinery29\NewRelic\Handler;
 
 class AgentTest extends \PHPUnit_Framework_TestCase
 {
+    public function testIsFinal()
+    {
+        $reflection = new \ReflectionClass(Agent::class);
+
+        $this->assertTrue($reflection->isFinal());
+    }
+
+    public function testImplementsAgentInterface()
+    {
+        $reflection = new \ReflectionClass(Agent::class);
+
+        $this->assertTrue($reflection->implementsInterface(AgentInterface::class));
+    }
+
     public function testConstructCreatesHandler()
     {
         $agent = new Agent();

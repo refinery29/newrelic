@@ -9,7 +9,7 @@
 
 namespace Refinery29\NewRelic\Handler;
 
-class DefaultHandler implements Handler
+final class DefaultHandler implements Handler
 {
     public function handle($functionName, array $arguments = [])
     {
