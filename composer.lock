@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1f11558e68586c4f54c97b21a2d511f9",
-    "content-hash": "92b1f21f8fdbebed6e8d0bdd90316e9d",
+    "hash": "d20dece83a42c2a9510f7d2177f570e7",
+    "content-hash": "24f8ce3e9f31a36640f78eeabed6e8d6",
     "packages": [],
     "packages-dev": [
         {
@@ -835,6 +835,66 @@
             ],
             "description": "Provides a configuration for fabpot/php-cs-fixer, used within Refinery29.",
             "time": "2016-04-19 12:49:54"
+        },
+        {
+            "name": "refinery29/test-util",
+            "version": "0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/refinery29/test-util.git",
+                "reference": "853fde7619a0054b1fac82e84643a02dd8068d67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/refinery29/test-util/zipball/853fde7619a0054b1fac82e84643a02dd8068d67",
+                "reference": "853fde7619a0054b1fac82e84643a02dd8068d67",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "beberlei/assert": "^2.4",
+                "codeclimate/php-test-reporter": "0.2.0",
+                "fzaninotto/faker": "^1.5",
+                "phpunit/phpunit": "^4.8.18 || ^5.2.3",
+                "refinery29/php-cs-fixer-config": "0.4.1"
+            },
+            "suggest": {
+                "fzaninotto/faker": "If you want to make use of the Faker\\GeneratorTrait",
+                "phpunit/phpunit": "If you want to make use of the PHPUnit\\BuildsMocksTrait"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Refinery29\\Test\\Util\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kayla Daniels",
+                    "email": "kayla.daniels@refinery29.com"
+                },
+                {
+                    "name": "Andreas Möller",
+                    "email": "andreas.moller@refinery29.com"
+                },
+                {
+                    "name": "R29 Product & Engineering",
+                    "email": "p.e@refinery29.com"
+                }
+            ],
+            "description": "Provides helpers for testing.",
+            "keywords": [
+                "faker",
+                "test",
+                "util"
+            ],
+            "time": "2016-05-12 19:20:35"
         },
         {
             "name": "satooshi/php-coveralls",
