@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f5ed91fb7d7e7ba8682eb05d92a19a00",
-    "content-hash": "746503829905c14cefce6f8ca1083061",
+    "hash": "12e9a2b438aebf625a72cdc3d3387b5f",
+    "content-hash": "fc8aa14009e45991716028b9a79b4500",
     "packages": [],
     "packages-dev": [
         {
@@ -179,6 +179,54 @@
             ],
             "description": "A tool to automatically fix PHP code style",
             "time": "2016-04-28 21:56:27"
+        },
+        {
+            "name": "fzaninotto/faker",
+            "version": "v1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/44f9a286a04b80c76a4e5fb7aad8bb539b920123",
+                "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3|^7.0"
+            },
+            "require-dev": {
+                "ext-intl": "*",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": []
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2016-04-29 12:21:54"
         },
         {
             "name": "guzzle/guzzle",
@@ -838,30 +886,29 @@
         },
         {
             "name": "refinery29/test-util",
-            "version": "0.4.1",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/refinery29/test-util.git",
-                "reference": "853fde7619a0054b1fac82e84643a02dd8068d67"
+                "reference": "6cb04b0256d89b419dbb21d88626593d93fcea2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/refinery29/test-util/zipball/853fde7619a0054b1fac82e84643a02dd8068d67",
-                "reference": "853fde7619a0054b1fac82e84643a02dd8068d67",
+                "url": "https://api.github.com/repos/refinery29/test-util/zipball/6cb04b0256d89b419dbb21d88626593d93fcea2c",
+                "reference": "6cb04b0256d89b419dbb21d88626593d93fcea2c",
                 "shasum": ""
             },
             "require": {
+                "fzaninotto/faker": "^1.6.0",
                 "php": ">=5.5"
             },
             "require-dev": {
-                "beberlei/assert": "^2.4",
+                "beberlei/assert": "^2.5.0",
                 "codeclimate/php-test-reporter": "0.2.0",
-                "fzaninotto/faker": "^1.5",
                 "phpunit/phpunit": "^4.8.18 || ^5.2.3",
-                "refinery29/php-cs-fixer-config": "0.4.1"
+                "refinery29/php-cs-fixer-config": "0.4.11"
             },
             "suggest": {
-                "fzaninotto/faker": "If you want to make use of the Faker\\GeneratorTrait",
                 "phpunit/phpunit": "If you want to make use of the PHPUnit\\BuildsMocksTrait"
             },
             "type": "library",
@@ -894,7 +941,7 @@
                 "test",
                 "util"
             ],
-            "time": "2016-05-12 19:20:35"
+            "time": "2016-05-15 15:38:47"
         },
         {
             "name": "satooshi/php-coveralls",
