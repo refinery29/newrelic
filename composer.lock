@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "634e3468be43a4577d971fe64d87cea5",
-    "content-hash": "56a40219a4614460277bca60a87a952a",
+    "hash": "099a6b77a23677b62d28622c0fbac77d",
+    "content-hash": "dff19044dbe6631db7aeb20abb1751ca",
     "packages": [],
     "packages-dev": [
         {
@@ -121,17 +121,17 @@
             "time": "2015-06-14 21:17:01"
         },
         {
-            "name": "fabpot/php-cs-fixer",
-            "version": "dev-master",
+            "name": "friendsofphp/php-cs-fixer",
+            "version": "v2.0.0-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "62898ea27f0f79633f3f9cead77d392088940226"
+                "reference": "d0d76b434728fcf522270b67b454ed7e84e850ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/62898ea27f0f79633f3f9cead77d392088940226",
-                "reference": "62898ea27f0f79633f3f9cead77d392088940226",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/d0d76b434728fcf522270b67b454ed7e84e850ed",
+                "reference": "d0d76b434728fcf522270b67b454ed7e84e850ed",
                 "shasum": ""
             },
             "require": {
@@ -178,7 +178,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2016-05-19 19:19:42"
+            "time": "2016-05-26 23:59:22"
         },
         {
             "name": "fzaninotto/faker",
@@ -845,20 +845,20 @@
         },
         {
             "name": "refinery29/php-cs-fixer-config",
-            "version": "0.4.12",
+            "version": "0.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/refinery29/php-cs-fixer-config.git",
-                "reference": "152ec9103f2daab68c34ac80e3d05a581546827e"
+                "reference": "63fe01a090d915bdfc2ba27e9f5d030c32287858"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/refinery29/php-cs-fixer-config/zipball/152ec9103f2daab68c34ac80e3d05a581546827e",
-                "reference": "152ec9103f2daab68c34ac80e3d05a581546827e",
+                "url": "https://api.github.com/repos/refinery29/php-cs-fixer-config/zipball/63fe01a090d915bdfc2ba27e9f5d030c32287858",
+                "reference": "63fe01a090d915bdfc2ba27e9f5d030c32287858",
                 "shasum": ""
             },
             "require": {
-                "fabpot/php-cs-fixer": "dev-master#62898ea",
+                "friendsofphp/php-cs-fixer": "2.0.0-alpha",
                 "php": "^5.5 || ^7.0"
             },
             "require-dev": {
@@ -881,8 +881,8 @@
                     "email": "andreas.moller@refinery29.com"
                 }
             ],
-            "description": "Provides a configuration for fabpot/php-cs-fixer, used within Refinery29.",
-            "time": "2016-05-20 06:30:12"
+            "description": "Provides a configuration for friendsofphp/php-cs-fixer, used within Refinery29.",
+            "time": "2016-05-27 14:46:49"
         },
         {
             "name": "refinery29/test-util",
@@ -1655,16 +1655,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.1.1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "1289d16209491b584839022f29257ad859b8532d"
+                "reference": "dff51f72b0706335131b00a7f49606168c582594"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/1289d16209491b584839022f29257ad859b8532d",
-                "reference": "1289d16209491b584839022f29257ad859b8532d",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/dff51f72b0706335131b00a7f49606168c582594",
+                "reference": "dff51f72b0706335131b00a7f49606168c582594",
                 "shasum": ""
             },
             "require": {
@@ -1676,7 +1676,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -1710,20 +1710,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-01-20 09:13:37"
+            "time": "2016-05-18 14:26:46"
         },
         {
             "name": "symfony/polyfill-php54",
-            "version": "v1.1.1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php54.git",
-                "reference": "9ba741ca01c77282ecf5796c2c1d667f03454ffb"
+                "reference": "34d761992f6f2cc6092cc0e5e93f38b53ba5e4f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/9ba741ca01c77282ecf5796c2c1d667f03454ffb",
-                "reference": "9ba741ca01c77282ecf5796c2c1d667f03454ffb",
+                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/34d761992f6f2cc6092cc0e5e93f38b53ba5e4f1",
+                "reference": "34d761992f6f2cc6092cc0e5e93f38b53ba5e4f1",
                 "shasum": ""
             },
             "require": {
@@ -1732,7 +1732,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -1768,7 +1768,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-01-25 19:13:00"
+            "time": "2016-05-18 14:26:46"
         },
         {
             "name": "symfony/process",
