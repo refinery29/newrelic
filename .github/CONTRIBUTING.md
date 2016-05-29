@@ -16,7 +16,7 @@ $ make test
 
 to run all the tests.
 
-### Coding Standards
+## Coding Standards
 
 We are using [`friendsofphp/php-cs-fixer`](https://github.com/FriendsOfPHP/PHP-CS-Fixer) to enforce coding standards.
 
