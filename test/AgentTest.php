@@ -12,9 +12,12 @@ namespace Refinery29\NewRelic\Test;
 use Refinery29\NewRelic\Agent;
 use Refinery29\NewRelic\AgentInterface;
 use Refinery29\NewRelic\Handler;
+use Refinery29\Test\Util\Faker\GeneratorTrait;
 
 class AgentTest extends \PHPUnit_Framework_TestCase
 {
+    use GeneratorTrait;
+
     public function testIsFinal()
     {
         $reflection = new \ReflectionClass(Agent::class);
@@ -45,12 +48,18 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $this->assertAttributeSame($handler, 'handler', $agent);
     }
 
-    public function testAddCustomParameter()
+    /**
+     * @dataProvider providerScalar
+     *
+     * @param mixed $value
+     */
+    public function testAddCustomParameter($value)
     {
-        $key = 'foo';
-        $value = 'bar';
+        $faker = $this->getFaker();
 
-        $result = true;
+        $key = $faker->word;
+
+        $result = $faker->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_add_custom_parameter',
@@ -66,11 +75,34 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($result, $agent->addCustomParameter($key, $value));
     }
 
+    /**
+     * @return \Generator
+     */
+    public function providerScalar()
+    {
+        $faker = $this->getFaker();
+
+        $values = [
+            $faker->word,
+            $faker->randomNumber(),
+            $faker->randomFloat(),
+            $faker->boolean(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
     public function testAddCustomTracer()
     {
-        $functionName = 'bar';
+        $faker = $this->getFaker();
 
-        $result = true;
+        $functionName = $faker->word;
+
+        $result = $faker->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_add_custom_tracer',
@@ -87,9 +119,11 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testBackgroundJob()
     {
-        $flag = true;
+        $faker = $this->getFaker();
 
-        $result = true;
+        $flag = $faker->boolean();
+
+        $result = $faker->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_background_job',
@@ -106,9 +140,11 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testCaptureParams()
     {
-        $enable = true;
+        $faker = $this->getFaker();
 
-        $result = true;
+        $enable = $faker->boolean();
+
+        $result = $faker->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_capture_params',
@@ -125,10 +161,12 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testCustomMetric()
     {
-        $name = 'foo';
-        $value = 9000;
+        $faker = $this->getFaker();
 
-        $result = true;
+        $name = $faker->word;
+        $value = $faker->randomFloat();
+
+        $result = $faker->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_custom_metric',
@@ -146,7 +184,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testDisableAutoRum()
     {
-        $result = true;
+        $result = $this->getFaker()->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_disable_autorum',
@@ -173,7 +211,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testEndTransaction()
     {
-        $ignore = false;
+        $ignore = $this->getFaker()->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_end_transaction',
@@ -189,9 +227,10 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testGetBrowserTimingFooter()
     {
-        $includeTags = false;
+        $faker = $this->getFaker();
 
-        $result = '<p>Foo</p>';
+        $includeTags = $faker->boolean();
+        $result = $faker->text();
 
         $handler = $this->getHandlerSpy(
             'newrelic_get_browser_timing_footer',
@@ -208,9 +247,10 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testGetBrowserTimingHeader()
     {
-        $includeTags = false;
+        $faker = $this->getFaker();
 
-        $result = '<p>Foo</p>';
+        $includeTags = $faker->boolean();
+        $result = $faker->text();
 
         $handler = $this->getHandlerSpy(
             'newrelic_get_browser_timing_header',
@@ -251,9 +291,11 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testNameTransaction()
     {
-        $name = 'foo';
+        $faker = $this->getFaker();
 
-        $result = true;
+        $name = $faker->word;
+
+        $result = $faker->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_name_transaction',
@@ -270,8 +312,10 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testNoticeError()
     {
-        $message = 'foo';
-        $exception = new \InvalidArgumentException('bar');
+        $faker = $this->getFaker();
+
+        $message = $faker->sentence();
+        $exception = new \InvalidArgumentException($faker->sentence());
 
         $result = true;
 
@@ -291,13 +335,15 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testRecordCustomEvent()
     {
-        $name = 'foo';
-        $attributes = [
-            'bar' => 'baz',
-            'qux' => 'vzy',
-        ];
+        $faker = $this->getFaker();
 
-        $result = true;
+        $name = $faker->word;
+        $attributes = array_combine(
+            $faker->words(),
+            $faker->words()
+        );
+
+        $result = $faker->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_record_custom_event',
@@ -315,11 +361,13 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testSetAppName()
     {
-        $name = 'foo';
-        $licence = 'bar9000';
-        $xmit = false;
+        $faker = $this->getFaker();
 
-        $result = true;
+        $name = $faker->word;
+        $licence = $faker->sentence();
+        $xmit = $faker->boolean();
+
+        $result = $faker->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_set_appname',
@@ -338,11 +386,13 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testSetUserAttributes()
     {
-        $user = 'foo';
-        $account = 'bar';
-        $product = 'baz';
+        $faker = $this->getFaker();
 
-        $result = true;
+        $user = $faker->userName;
+        $account = $faker->word;
+        $product = $faker->word;
+
+        $result = $faker->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_set_user_attributes',
@@ -361,10 +411,12 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testStartTransaction()
     {
-        $name = 'foo';
-        $licence = 'bar9000';
+        $faker = $this->getFaker();
 
-        $result = true;
+        $name = $faker->word;
+        $licence = $faker->sentence();
+
+        $result = $faker->boolean();
 
         $handler = $this->getHandlerSpy(
             'newrelic_start_transaction',
