@@ -41,14 +41,14 @@ final class Agent implements AgentInterface
 
     public function backgroundJob($flag = true)
     {
-        return $this->handle('newrelic_background_job', [
+        $this->handle('newrelic_background_job', [
             $flag,
         ]);
     }
 
     public function captureParams($enable = true)
     {
-        return $this->handle('newrelic_capture_params', [
+        $this->handle('newrelic_capture_params', [
             $enable,
         ]);
     }
@@ -68,7 +68,7 @@ final class Agent implements AgentInterface
 
     public function endOfTransaction()
     {
-        return $this->handle('newrelic_end_of_transaction');
+        $this->handle('newrelic_end_of_transaction');
     }
 
     public function endTransaction($ignore = false)
@@ -94,12 +94,12 @@ final class Agent implements AgentInterface
 
     public function ignoreApdex()
     {
-        return $this->handle('newrelic_ignore_apdex');
+        $this->handle('newrelic_ignore_apdex');
     }
 
     public function ignoreTransaction()
     {
-        return $this->handle('newrelic_ignore_transaction');
+        $this->handle('newrelic_ignore_transaction');
     }
 
     public function nameTransaction($name)
@@ -111,7 +111,7 @@ final class Agent implements AgentInterface
 
     public function noticeError($message, \Exception $exception = null)
     {
-        return $this->handle('newrelic_notice_error', [
+        $this->handle('newrelic_notice_error', [
             $message,
             $exception,
         ]);
@@ -119,7 +119,7 @@ final class Agent implements AgentInterface
 
     public function recordCustomEvent($name, array $attributes)
     {
-        return $this->handle('newrelic_record_custom_event', [
+        $this->handle('newrelic_record_custom_event', [
             $name,
             $attributes,
         ]);

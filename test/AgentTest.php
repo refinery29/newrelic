@@ -123,19 +123,13 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $flag = $faker->boolean();
 
-        $result = $faker->boolean();
-
-        $handler = $this->getHandlerSpy(
-            'newrelic_background_job',
-            [
-                $flag,
-            ],
-            $result
-        );
+        $handler = $this->getHandlerSpy('newrelic_background_job', [
+            $flag,
+        ]);
 
         $agent = new Agent($handler);
 
-        $this->assertSame($result, $agent->backgroundJob($flag));
+        $agent->backgroundJob($flag);
     }
 
     public function testCaptureParams()
@@ -144,19 +138,13 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $enable = $faker->boolean();
 
-        $result = $faker->boolean();
-
-        $handler = $this->getHandlerSpy(
-            'newrelic_capture_params',
-            [
-                $enable,
-            ],
-            $result
-        );
+        $handler = $this->getHandlerSpy('newrelic_capture_params', [
+            $enable,
+        ]);
 
         $agent = new Agent($handler);
 
-        $this->assertSame($result, $agent->captureParams($enable));
+        $agent->captureParams($enable);
     }
 
     public function testCustomMetric()
@@ -199,26 +187,20 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testEndOfTransaction()
     {
-        $handler = $this->getHandlerSpy(
-            'newrelic_end_of_transaction',
-            []
-        );
+        $handler = $this->getHandlerSpy('newrelic_end_of_transaction');
 
         $agent = new Agent($handler);
 
-        $this->assertNull($agent->endOfTransaction());
+        $agent->endOfTransaction();
     }
 
     public function testEndTransaction()
     {
         $ignore = $this->getFaker()->boolean();
 
-        $handler = $this->getHandlerSpy(
-            'newrelic_end_transaction',
-            [
-                $ignore,
-            ]
-        );
+        $handler = $this->getHandlerSpy('newrelic_end_transaction', [
+            $ignore,
+        ]);
 
         $agent = new Agent($handler);
 
@@ -267,26 +249,20 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testIgnoreApdex()
     {
-        $handler = $this->getHandlerSpy(
-            'newrelic_ignore_apdex',
-            []
-        );
+        $handler = $this->getHandlerSpy('newrelic_ignore_apdex');
 
         $agent = new Agent($handler);
 
-        $this->assertNull($agent->ignoreApdex());
+        $agent->ignoreApdex();
     }
 
     public function testIgnoreTransaction()
     {
-        $handler = $this->getHandlerSpy(
-            'newrelic_ignore_transaction',
-            []
-        );
+        $handler = $this->getHandlerSpy('newrelic_ignore_transaction');
 
         $agent = new Agent($handler);
 
-        $this->assertNull($agent->ignoreTransaction());
+        $agent->ignoreTransaction();
     }
 
     public function testNameTransaction()
@@ -317,20 +293,14 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $message = $faker->sentence();
         $exception = new \InvalidArgumentException($faker->sentence());
 
-        $result = true;
-
-        $handler = $this->getHandlerSpy(
-            'newrelic_notice_error',
-            [
-                $message,
-                $exception,
-            ],
-            $result
-        );
+        $handler = $this->getHandlerSpy('newrelic_notice_error', [
+            $message,
+            $exception,
+        ]);
 
         $agent = new Agent($handler);
 
-        $this->assertSame($result, $agent->noticeError($message, $exception));
+        $agent->noticeError($message, $exception);
     }
 
     public function testRecordCustomEvent()
@@ -343,20 +313,14 @@ class AgentTest extends \PHPUnit_Framework_TestCase
             $faker->words()
         );
 
-        $result = $faker->boolean();
-
-        $handler = $this->getHandlerSpy(
-            'newrelic_record_custom_event',
-            [
-                $name,
-                $attributes,
-            ],
-            $result
-        );
+        $handler = $this->getHandlerSpy('newrelic_record_custom_event', [
+            $name,
+            $attributes,
+        ]);
 
         $agent = new Agent($handler);
 
-        $this->assertSame($result, $agent->recordCustomEvent($name, $attributes));
+        $agent->recordCustomEvent($name, $attributes);
     }
 
     public function testSetAppName()
