@@ -381,7 +381,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $agent = new Agent($handler);
 
-        $this->assertSame($result, $agent->setAppName($name, $licence, $xmit));
+        $this->assertSame($result, $agent->setAppname($name, $licence, $xmit));
     }
 
     public function testSetUserAttributes()
