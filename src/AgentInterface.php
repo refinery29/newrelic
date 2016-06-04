@@ -36,6 +36,8 @@ interface AgentInterface
      * @param string                $key
      * @param string|int|float|bool $value
      *
+     * @throws \InvalidArgumentException
+     *
      * @return bool
      */
     public function addCustomParameter($key, $value);
@@ -64,6 +66,8 @@ interface AgentInterface
      * @link https://docs.newrelic.com/docs/agents/php-agent/configuration/php-agent-newrelicini-settings#inivar-tt-custom
      *
      * @param bool $flag
+     *
+     * @throws \InvalidArgumentException
      */
     public function backgroundJob($flag = true);
 
@@ -79,6 +83,8 @@ interface AgentInterface
      * @link https://docs.newrelic.com/docs/agents/php-agent/configuration/php-agent-newrelicini-settings#inivar-capture_params
      *
      * @param bool $enable
+     *
+     * @throws \InvalidArgumentException
      */
     public function captureParams($enable = true);
 
@@ -99,6 +105,8 @@ interface AgentInterface
      *
      * @param string $metricName
      * @param float  $value
+     *
+     * @throws \InvalidArgumentException
      *
      * @return bool
      */
@@ -145,6 +153,8 @@ interface AgentInterface
      *
      * @param bool $ignore
      *
+     * @throws \InvalidArgumentException
+     *
      * @return bool
      */
     public function endTransaction($ignore = false);
@@ -156,6 +166,8 @@ interface AgentInterface
      *
      * @param bool $includeTags
      *
+     * @throws \InvalidArgumentException
+     *
      * @return string
      */
     public function getBrowserTimingFooter($includeTags = false);
@@ -166,6 +178,8 @@ interface AgentInterface
      * enclosed in a <script> tag.
      *
      * @param bool $includeTags
+     *
+     * @throws \InvalidArgumentException
      *
      * @return string
      */
@@ -214,6 +228,8 @@ interface AgentInterface
 
      * @param string $name
      *
+     * @throws \InvalidArgumentException
+     *
      * @return bool
      */
     public function nameTransaction($name);
@@ -233,6 +249,8 @@ interface AgentInterface
      *
      * @param string     $message
      * @param \Exception $exception
+     *
+     * @throws \InvalidArgumentException
      */
     public function noticeError($message, \Exception $exception = null);
 
@@ -250,6 +268,8 @@ interface AgentInterface
      *
      * @param string $name
      * @param array  $attributes
+     *
+     * @throws \InvalidArgumentException
      */
     public function recordCustomEvent($name, array $attributes);
 
@@ -287,6 +307,8 @@ interface AgentInterface
      * @param string $license
      * @param bool   $xmit
      *
+     * @throws \InvalidArgumentException
+     *
      * @return bool
      */
     public function setAppname($name, $license = '', $xmit = false);
@@ -305,6 +327,8 @@ interface AgentInterface
      * @param string $account
      * @param string $product
      *
+     * @throws \InvalidArgumentException
+     *
      * @return bool
      */
     public function setUserAttributes($user = '', $account = '', $product = '');
@@ -322,6 +346,8 @@ interface AgentInterface
      *
      * @param string $appName
      * @param string $license
+     *
+     * @throws \InvalidArgumentException
      *
      * @return bool
      */
