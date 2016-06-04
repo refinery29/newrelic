@@ -18,7 +18,7 @@
         "codeclimate/php-test-reporter": "^0.2.0",
         "phpunit/phpunit": "^4.8.24",
         "refinery29/php-cs-fixer-config": "0.4.16",
-        "refinery29/test-util": "0.4.2"
+        "refinery29/test-util": "0.4.3"
     },
     "autoload": {
         "psr-4": {
