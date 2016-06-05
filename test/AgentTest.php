@@ -49,6 +49,63 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $key
+     */
+    public function testAddCustomParameterRejectsInvalidKey($key)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $value = $this->getFaker()->randomNumber();
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->addCustomParameter(
+            $key,
+            $value
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param string $key
+     */
+    public function testAddCustomParameterRejectsBlankKey($key)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $value = $this->getFaker()->randomNumber();
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->addCustomParameter(
+            $key,
+            $value
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidScalar::data()
+     *
+     * @param mixed $value
+     */
+    public function testAddCustomParameterRejectsInvalidValue($value)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $key = $this->getFaker()->word;
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->addCustomParameter(
+            $key,
+            $value
+        );
+    }
+
+    /**
      * @dataProvider providerScalar
      *
      * @param mixed $value
@@ -96,6 +153,34 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $functionName
+     */
+    public function testAddCustomTracerRejectsInvalidFunctionName($functionName)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->addCustomTracer($functionName);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $functionName
+     */
+    public function testAddCustomTracerRejectsBlankFunctionName($functionName)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->addCustomTracer($functionName);
+    }
+
     public function testAddCustomTracer()
     {
         $faker = $this->getFaker();
@@ -117,6 +202,20 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($result, $agent->addCustomTracer($functionName));
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidBoolean::data()
+     *
+     * @param mixed $flag
+     */
+    public function testBackgroundJobRejectsInvalidFlag($flag)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->backgroundJob($flag);
+    }
+
     public function testBackgroundJob()
     {
         $faker = $this->getFaker();
@@ -132,6 +231,20 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $agent->backgroundJob($flag);
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidBoolean::data()
+     *
+     * @param mixed $enable
+     */
+    public function testCaptureParamsRejectsInvalidEnable($enable)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->captureParams($enable);
+    }
+
     public function testCaptureParams()
     {
         $faker = $this->getFaker();
@@ -145,6 +258,63 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $agent = new Agent($handler);
 
         $agent->captureParams($enable);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $metricName
+     */
+    public function testCustomMetricRejectsInvalidMetricName($metricName)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $value = $this->getFaker()->randomNumber();
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->customMetric(
+            $metricName,
+            $value
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param string $metricName
+     */
+    public function testCustomMetricRejectsBlankMetricName($metricName)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $value = $this->getFaker()->randomNumber();
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->customMetric(
+            $metricName,
+            $value
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidFloat::data()
+     *
+     * @param mixed $value
+     */
+    public function testCustomMetricRejectsInvalidValue($value)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $metricName = $this->getFaker()->word;
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->customMetric(
+            $metricName,
+            $value
+        );
     }
 
     public function testCustomMetric()
@@ -194,6 +364,20 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $agent->endOfTransaction();
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidBoolean::data()
+     *
+     * @param mixed $ignore
+     */
+    public function testEndTransactionRejectsInvalidIgnore($ignore)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->endTransaction($ignore);
+    }
+
     public function testEndTransaction()
     {
         $ignore = $this->getFaker()->boolean();
@@ -205,6 +389,20 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $agent = new Agent($handler);
 
         $this->assertNull($agent->endTransaction($ignore));
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidBoolean::data()
+     *
+     * @param mixed $includeTags
+     */
+    public function testGetBrowserTimingFooterRejectsInvalidIncludeTags($includeTags)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->getBrowserTimingFooter($includeTags);
     }
 
     public function testGetBrowserTimingFooter()
@@ -225,6 +423,20 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $agent = new Agent($handler);
 
         $this->assertSame($result, $agent->getBrowserTimingFooter($includeTags));
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidBoolean::data()
+     *
+     * @param mixed $includeTags
+     */
+    public function testGetBrowserTimingHeaderRejectsInvalidIncludeTags($includeTags)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->getBrowserTimingHeader($includeTags);
     }
 
     public function testGetBrowserTimingHeader()
@@ -265,6 +477,34 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $agent->ignoreTransaction();
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $name
+     */
+    public function testNameTransactionRejectsInvalidName($name)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->nameTransaction($name);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $name
+     */
+    public function testNameTransactionRejectsBlankName($name)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->nameTransaction($name);
+    }
+
     public function testNameTransaction()
     {
         $faker = $this->getFaker();
@@ -286,6 +526,34 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($result, $agent->nameTransaction($name));
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $message
+     */
+    public function testNoticeErrorRejectsInvalidMessage($message)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->noticeError($message);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $message
+     */
+    public function testNoticeErrorRejectsBlankMessage($message)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->noticeError($message);
+    }
+
     public function testNoticeError()
     {
         $faker = $this->getFaker();
@@ -301,6 +569,97 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $agent = new Agent($handler);
 
         $agent->noticeError($message, $exception);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $name
+     */
+    public function testRecordCustomEventRejectsInvalidName($name)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $attributes = array_combine(
+            $faker->words(),
+            $faker->words()
+        );
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->recordCustomEvent(
+            $name,
+            $attributes
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $name
+     */
+    public function testRecordCustomEventRejectsBlankName($name)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $attributes = array_combine(
+            $faker->words(),
+            $faker->words()
+        );
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->recordCustomEvent(
+            $name,
+            $attributes
+        );
+    }
+
+    public function testRecordCustomEventRejectsNumericAttributeKeys()
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $name = $faker->word;
+        $attributes = $faker->words();
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->recordCustomEvent(
+            $name,
+            $attributes
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidScalar::data()
+     *
+     * @param mixed $value
+     */
+    public function testRecordCustomEventRejectsInvalidScalarAttributeValues($value)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $name = $faker->word;
+        $key = $faker->word;
+
+        $attributes = [
+            $key => $value,
+        ];
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->recordCustomEvent(
+            $name,
+            $attributes
+        );
     }
 
     public function testRecordCustomEvent()
@@ -321,6 +680,98 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $agent = new Agent($handler);
 
         $agent->recordCustomEvent($name, $attributes);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $name
+     */
+    public function testSetAppNameRejectsInvalidName($name)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $license = $faker->sentence();
+        $xmit = $faker->boolean();
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->setAppname(
+            $name,
+            $license,
+            $xmit
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param string $name
+     */
+    public function testSetAppNameRejectsBlankName($name)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $license = $faker->sentence();
+        $xmit = $faker->boolean();
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->setAppname(
+            $name,
+            $license,
+            $xmit
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param string $license
+     */
+    public function testSetAppNameRejectsInvalidLicense($license)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $name = $faker->word;
+        $xmit = $faker->boolean();
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->setAppname(
+            $name,
+            $license,
+            $xmit
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidBoolean::data()
+     *
+     * @param mixed $xmit
+     */
+    public function testSetAppNameRejectsInvalidXmit($xmit)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $name = $faker->word;
+        $license = $faker->sentence();
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->setAppname(
+            $name,
+            $license,
+            $xmit
+        );
     }
 
     public function testSetAppName()
@@ -348,6 +799,62 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($result, $agent->setAppname($name, $licence, $xmit));
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $user
+     */
+    public function testSetUserAttributesRejectsInvalidUser($user)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->setUserAttributes($user);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $account
+     */
+    public function testSetUserAttributesRejectsInvalidAccount($account)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $user = $this->getFaker()->word;
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->setUserAttributes(
+            $user,
+            $account
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $product
+     */
+    public function testSetUserAttributesRejectsInvalidProduct($product)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $user = $faker->word;
+        $account = $faker->word;
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->setUserAttributes(
+            $user,
+            $account,
+            $product
+        );
+    }
+
     public function testSetUserAttributes()
     {
         $faker = $this->getFaker();
@@ -371,6 +878,53 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $agent = new Agent($handler);
 
         $this->assertSame($result, $agent->setUserAttributes($user, $account, $product));
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $appName
+     */
+    public function testStartTransactionRejectsInvalidAppName($appName)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->startTransaction($appName);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $appName
+     */
+    public function testStartTransactionRejectsBlankAppName($appName)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->startTransaction($appName);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $license
+     */
+    public function testStartTransactionRejectsInvalidLicense($license)
+    {
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $appName = $this->getFaker()->word;
+
+        $agent = new Agent($this->getHandlerMock());
+
+        $agent->startTransaction(
+            $appName,
+            $license
+        );
     }
 
     public function testStartTransaction()

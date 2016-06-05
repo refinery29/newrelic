@@ -9,6 +9,7 @@
 
 namespace Refinery29\NewRelic;
 
+use Assert\Assertion;
 use Refinery29\NewRelic\Handler\DefaultHandler;
 use Refinery29\NewRelic\Handler\Handler;
 
@@ -26,6 +27,10 @@ final class Agent implements AgentInterface
 
     public function addCustomParameter($key, $value)
     {
+        Assertion::string($key);
+        Assertion::notBlank($key);
+        Assertion::scalar($value);
+
         return $this->handle('newrelic_add_custom_parameter', [
             $key,
             $value,
@@ -34,6 +39,9 @@ final class Agent implements AgentInterface
 
     public function addCustomTracer($functionName)
     {
+        Assertion::string($functionName);
+        Assertion::notBlank($functionName);
+
         return $this->handle('newrelic_add_custom_tracer', [
             $functionName,
         ]);
@@ -41,6 +49,8 @@ final class Agent implements AgentInterface
 
     public function backgroundJob($flag = true)
     {
+        Assertion::boolean($flag);
+
         $this->handle('newrelic_background_job', [
             $flag,
         ]);
@@ -48,6 +58,8 @@ final class Agent implements AgentInterface
 
     public function captureParams($enable = true)
     {
+        Assertion::boolean($enable);
+
         $this->handle('newrelic_capture_params', [
             $enable,
         ]);
@@ -55,6 +67,10 @@ final class Agent implements AgentInterface
 
     public function customMetric($metricName, $value)
     {
+        Assertion::string($metricName);
+        Assertion::notBlank($metricName);
+        Assertion::float($value);
+
         return $this->handle('newrelic_custom_metric', [
             $metricName,
             $value,
@@ -73,6 +89,8 @@ final class Agent implements AgentInterface
 
     public function endTransaction($ignore = false)
     {
+        Assertion::boolean($ignore);
+
         return $this->handle('newrelic_end_transaction', [
             $ignore,
         ]);
@@ -80,6 +98,8 @@ final class Agent implements AgentInterface
 
     public function getBrowserTimingFooter($includeTags = false)
     {
+        Assertion::boolean($includeTags);
+
         return $this->handle('newrelic_get_browser_timing_footer', [
             $includeTags,
         ]);
@@ -87,6 +107,8 @@ final class Agent implements AgentInterface
 
     public function getBrowserTimingHeader($includeTags = false)
     {
+        Assertion::boolean($includeTags);
+
         return $this->handle('newrelic_get_browser_timing_header', [
             $includeTags,
         ]);
@@ -104,6 +126,9 @@ final class Agent implements AgentInterface
 
     public function nameTransaction($name)
     {
+        Assertion::string($name);
+        Assertion::notBlank($name);
+
         return $this->handle('newrelic_name_transaction', [
             $name,
         ]);
@@ -111,6 +136,9 @@ final class Agent implements AgentInterface
 
     public function noticeError($message, \Exception $exception = null)
     {
+        Assertion::string($message);
+        Assertion::notBlank($message);
+
         $this->handle('newrelic_notice_error', [
             $message,
             $exception,
@@ -119,6 +147,11 @@ final class Agent implements AgentInterface
 
     public function recordCustomEvent($name, array $attributes)
     {
+        Assertion::string($name);
+        Assertion::notBlank($name);
+        Assertion::allString(array_keys($attributes));
+        Assertion::allScalar(array_values($attributes));
+
         $this->handle('newrelic_record_custom_event', [
             $name,
             $attributes,
@@ -127,6 +160,11 @@ final class Agent implements AgentInterface
 
     public function setAppname($name, $license = '', $xmit = false)
     {
+        Assertion::string($name);
+        Assertion::notBlank($name);
+        Assertion::string($license);
+        Assertion::boolean($xmit);
+
         return $this->handle('newrelic_set_appname', [
             $name,
             $license,
@@ -136,6 +174,10 @@ final class Agent implements AgentInterface
 
     public function setUserAttributes($user = '', $account = '', $product = '')
     {
+        Assertion::string($user);
+        Assertion::string($account);
+        Assertion::string($product);
+
         return $this->handle('newrelic_set_user_attributes', [
             $user,
             $account,
@@ -145,6 +187,10 @@ final class Agent implements AgentInterface
 
     public function startTransaction($appName, $license = '')
     {
+        Assertion::string($appName);
+        Assertion::notBlank($appName);
+        Assertion::string($license);
+
         return $this->handle('newrelic_start_transaction', [
             $appName,
             $license,
