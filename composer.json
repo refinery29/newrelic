@@ -13,7 +13,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^5.5 || ^7.0",
-        "beberlei/assert": "^2.5.0"
+        "beberlei/assert": "^2.5.1"
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "0.3.2",
