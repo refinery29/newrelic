@@ -976,8 +976,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
                 $this->identicalTo($functionName),
                 $this->identicalTo($arguments)
             )
-            ->willReturn($result)
-        ;
+            ->willReturn($result);
 
         return $handler;
     }
