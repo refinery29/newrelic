@@ -13,7 +13,7 @@ final class DefaultHandler implements Handler
 {
     public function handle($functionName, array $arguments = [])
     {
-        return call_user_func_array($functionName, $arguments);
+        return \call_user_func_array($functionName, $arguments);
     }
 
     /**
@@ -21,6 +21,6 @@ final class DefaultHandler implements Handler
      */
     public function isExtensionLoaded()
     {
-        return extension_loaded('newrelic') && function_exists('newrelic_set_appname');
+        return \extension_loaded('newrelic') && function_exists('newrelic_set_appname');
     }
 }

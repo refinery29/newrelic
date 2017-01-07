@@ -39,7 +39,7 @@ class DefaultHandlerTest extends \PHPUnit_Framework_TestCase
 
         $handler = new DefaultHandler();
 
-        $expected = call_user_func_array($functionName, $arguments);
+        $expected = \call_user_func_array($functionName, $arguments);
 
         $this->assertSame($expected, $handler->handle($functionName, $arguments));
     }
@@ -56,6 +56,6 @@ class DefaultHandlerTest extends \PHPUnit_Framework_TestCase
      */
     private function isExtensionLoaded()
     {
-        return extension_loaded('newrelic') && function_exists('newrelic_set_appname');
+        return \extension_loaded('newrelic') && function_exists('newrelic_set_appname');
     }
 }
