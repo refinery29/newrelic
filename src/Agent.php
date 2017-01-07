@@ -149,8 +149,8 @@ final class Agent implements AgentInterface
     {
         Assertion::string($name);
         Assertion::notBlank($name);
-        Assertion::allString(array_keys($attributes));
-        Assertion::allScalar(array_values($attributes));
+        Assertion::allString(\array_keys($attributes));
+        Assertion::allScalar(\array_values($attributes));
 
         $this->handle('newrelic_record_custom_event', [
             $name,

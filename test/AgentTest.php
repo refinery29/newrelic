@@ -582,7 +582,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $faker = $this->getFaker();
 
-        $attributes = array_combine(
+        $attributes = \array_combine(
             $faker->words(),
             $faker->words()
         );
@@ -606,7 +606,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $faker = $this->getFaker();
 
-        $attributes = array_combine(
+        $attributes = \array_combine(
             $faker->words(),
             $faker->words()
         );
@@ -667,7 +667,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $faker = $this->getFaker();
 
         $name = $faker->word;
-        $attributes = array_combine(
+        $attributes = \array_combine(
             $faker->words(),
             $faker->words()
         );
