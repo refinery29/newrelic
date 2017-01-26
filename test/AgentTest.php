@@ -12,11 +12,11 @@ namespace Refinery29\NewRelic\Test;
 use Refinery29\NewRelic\Agent;
 use Refinery29\NewRelic\AgentInterface;
 use Refinery29\NewRelic\Handler;
-use Refinery29\Test\Util\Faker\GeneratorTrait;
+use Refinery29\Test\Util\TestHelper;
 
 class AgentTest extends \PHPUnit_Framework_TestCase
 {
-    use GeneratorTrait;
+    use TestHelper;
 
     public function testIsFinal()
     {
