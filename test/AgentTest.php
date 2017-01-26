@@ -14,16 +14,9 @@ use Refinery29\NewRelic\AgentInterface;
 use Refinery29\NewRelic\Handler;
 use Refinery29\Test\Util\TestHelper;
 
-class AgentTest extends \PHPUnit_Framework_TestCase
+final class AgentTest extends \PHPUnit_Framework_TestCase
 {
     use TestHelper;
-
-    public function testIsFinal()
-    {
-        $reflection = new \ReflectionClass(Agent::class);
-
-        $this->assertTrue($reflection->isFinal());
-    }
 
     public function testImplementsAgentInterface()
     {
