@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/refinery29/newrelic.svg?branch=master)](https://travis-ci.org/refinery29/newrelic)
 [![Code Climate](https://codeclimate.com/github/refinery29/newrelic/badges/gpa.svg)](https://codeclimate.com/github/refinery29/newrelic)
 [![Test Coverage](https://codeclimate.com/github/refinery29/newrelic/badges/coverage.svg)](https://codeclimate.com/github/refinery29/newrelic/coverage)
+[![Issue Count](https://codeclimate.com/github/refinery29/newrelic/badges/issue_count.svg)](https://codeclimate.com/github/refinery29/newrelic)
 
 This repository provides a wrapper around the [New Relic PHP API](https://docs.newrelic.com/docs/agents/php-agent/configuration/php-agent-api), 
 inspired by [`intouch/newrelic`](https://github.com/In-Touch/newrelic).
