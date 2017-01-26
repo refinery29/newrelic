@@ -20,9 +20,7 @@ final class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsAgentInterface()
     {
-        $reflection = new \ReflectionClass(Agent::class);
-
-        $this->assertTrue($reflection->implementsInterface(AgentInterface::class));
+        $this->assertImplements(AgentInterface::class, Agent::class);
     }
 
     public function testConstructCreatesHandler()

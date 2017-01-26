@@ -11,14 +11,15 @@ namespace Refinery29\NewRelic\Test\Handler;
 
 use Refinery29\NewRelic\Handler\Handler;
 use Refinery29\NewRelic\Handler\NullHandler;
+use Refinery29\Test\Util\TestHelper;
 
 final class NullHandlerTest extends \PHPUnit_Framework_TestCase
 {
+    use TestHelper;
+
     public function testImplementsHandlerInterface()
     {
-        $reflection = new \ReflectionClass(NullHandler::class);
-
-        $this->assertTrue($reflection->implementsInterface(Handler::class));
+        $this->assertImplements(Handler::class, NullHandler::class);
     }
 
     public function testHandleReturnsFalse()

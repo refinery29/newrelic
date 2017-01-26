@@ -11,14 +11,15 @@ namespace Refinery29\NewRelic\Test\Handler;
 
 use Refinery29\NewRelic\Handler\DefaultHandler;
 use Refinery29\NewRelic\Handler\Handler;
+use Refinery29\Test\Util\TestHelper;
 
 final class DefaultHandlerTest extends \PHPUnit_Framework_TestCase
 {
+    use TestHelper;
+
     public function testImplementsHandlerInterface()
     {
-        $reflection = new \ReflectionClass(DefaultHandler::class);
-
-        $this->assertTrue($reflection->implementsInterface(Handler::class));
+        $this->assertImplements(Handler::class, DefaultHandler::class);
     }
 
     public function testHandleCallsFunctionWithArguments()
