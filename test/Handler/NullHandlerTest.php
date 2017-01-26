@@ -12,7 +12,7 @@ namespace Refinery29\NewRelic\Test\Handler;
 use Refinery29\NewRelic\Handler\Handler;
 use Refinery29\NewRelic\Handler\NullHandler;
 
-class NullHandlerTest extends \PHPUnit_Framework_TestCase
+final class NullHandlerTest extends \PHPUnit_Framework_TestCase
 {
     public function testImplementsHandlerInterface()
     {
