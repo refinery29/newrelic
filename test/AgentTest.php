@@ -55,7 +55,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddCustomParameterRejectsInvalidKey($key)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $value = $this->getFaker()->randomNumber();
 
@@ -74,7 +74,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddCustomParameterRejectsBlankKey($key)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $value = $this->getFaker()->randomNumber();
 
@@ -93,7 +93,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddCustomParameterRejectsInvalidValue($value)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $key = $this->getFaker()->word;
 
@@ -160,7 +160,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddCustomTracerRejectsInvalidFunctionName($functionName)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -174,7 +174,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddCustomTracerRejectsBlankFunctionName($functionName)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -209,7 +209,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testBackgroundJobRejectsInvalidFlag($flag)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -238,7 +238,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testCaptureParamsRejectsInvalidEnable($enable)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -267,7 +267,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testCustomMetricRejectsInvalidMetricName($metricName)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $value = $this->getFaker()->randomNumber();
 
@@ -286,7 +286,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testCustomMetricRejectsBlankMetricName($metricName)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $value = $this->getFaker()->randomNumber();
 
@@ -305,7 +305,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testCustomMetricRejectsInvalidValue($value)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $metricName = $this->getFaker()->word;
 
@@ -371,7 +371,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testEndTransactionRejectsInvalidIgnore($ignore)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -398,7 +398,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetBrowserTimingFooterRejectsInvalidIncludeTags($includeTags)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -432,7 +432,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetBrowserTimingHeaderRejectsInvalidIncludeTags($includeTags)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -484,7 +484,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testNameTransactionRejectsInvalidName($name)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -498,7 +498,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testNameTransactionRejectsBlankName($name)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -533,7 +533,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testNoticeErrorRejectsInvalidMessage($message)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -547,7 +547,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testNoticeErrorRejectsBlankMessage($message)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -578,7 +578,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testRecordCustomEventRejectsInvalidName($name)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -602,7 +602,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testRecordCustomEventRejectsBlankName($name)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -621,7 +621,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testRecordCustomEventRejectsNumericAttributeKeys()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -643,7 +643,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testRecordCustomEventRejectsInvalidScalarAttributeValues($value)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -689,7 +689,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAppNameRejectsInvalidName($name)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -712,7 +712,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAppNameRejectsBlankName($name)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -735,7 +735,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAppNameRejectsInvalidLicense($license)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -758,7 +758,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAppNameRejectsInvalidXmit($xmit)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -806,7 +806,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetUserAttributesRejectsInvalidUser($user)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -820,7 +820,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetUserAttributesRejectsInvalidAccount($account)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $user = $this->getFaker()->word;
 
@@ -839,7 +839,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetUserAttributesRejectsInvalidProduct($product)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -887,7 +887,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testStartTransactionRejectsInvalidAppName($appName)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -901,7 +901,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testStartTransactionRejectsBlankAppName($appName)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $agent = new Agent($this->createHandlerMock());
 
@@ -915,7 +915,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     public function testStartTransactionRejectsInvalidLicense($license)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $appName = $this->getFaker()->word;
 
