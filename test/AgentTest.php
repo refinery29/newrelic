@@ -955,7 +955,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      */
     private function getHandlerMock()
     {
-        return $this->getMock(Handler\Handler::class);
+        return $this->createMock(Handler\Handler::class);
     }
 
     /**
