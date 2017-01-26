@@ -41,7 +41,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructSetsHandler()
     {
-        $handler = $this->getHandlerMock();
+        $handler = $this->createHandlerMock();
 
         $agent = new Agent($handler);
 
@@ -59,7 +59,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $value = $this->getFaker()->randomNumber();
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->addCustomParameter(
             $key,
@@ -78,7 +78,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $value = $this->getFaker()->randomNumber();
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->addCustomParameter(
             $key,
@@ -97,7 +97,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $key = $this->getFaker()->word;
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->addCustomParameter(
             $key,
@@ -118,7 +118,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $result = $faker->boolean();
 
-        $handler = $this->getHandlerSpy(
+        $handler = $this->createHandlerSpy(
             'newrelic_add_custom_parameter',
             [
                 $key,
@@ -162,7 +162,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->addCustomTracer($functionName);
     }
@@ -176,7 +176,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->addCustomTracer($functionName);
     }
@@ -189,7 +189,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $result = $faker->boolean();
 
-        $handler = $this->getHandlerSpy(
+        $handler = $this->createHandlerSpy(
             'newrelic_add_custom_tracer',
             [
                 $functionName,
@@ -211,7 +211,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->backgroundJob($flag);
     }
@@ -222,7 +222,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $flag = $faker->boolean();
 
-        $handler = $this->getHandlerSpy('newrelic_background_job', [
+        $handler = $this->createHandlerSpy('newrelic_background_job', [
             $flag,
         ]);
 
@@ -240,7 +240,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->captureParams($enable);
     }
@@ -251,7 +251,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $enable = $faker->boolean();
 
-        $handler = $this->getHandlerSpy('newrelic_capture_params', [
+        $handler = $this->createHandlerSpy('newrelic_capture_params', [
             $enable,
         ]);
 
@@ -271,7 +271,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $value = $this->getFaker()->randomNumber();
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->customMetric(
             $metricName,
@@ -290,7 +290,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $value = $this->getFaker()->randomNumber();
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->customMetric(
             $metricName,
@@ -309,7 +309,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $metricName = $this->getFaker()->word;
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->customMetric(
             $metricName,
@@ -326,7 +326,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $result = $faker->boolean();
 
-        $handler = $this->getHandlerSpy(
+        $handler = $this->createHandlerSpy(
             'newrelic_custom_metric',
             [
                 $name,
@@ -344,7 +344,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $result = $this->getFaker()->boolean();
 
-        $handler = $this->getHandlerSpy(
+        $handler = $this->createHandlerSpy(
             'newrelic_disable_autorum',
             [],
             $result
@@ -357,7 +357,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testEndOfTransaction()
     {
-        $handler = $this->getHandlerSpy('newrelic_end_of_transaction');
+        $handler = $this->createHandlerSpy('newrelic_end_of_transaction');
 
         $agent = new Agent($handler);
 
@@ -373,7 +373,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->endTransaction($ignore);
     }
@@ -382,7 +382,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $ignore = $this->getFaker()->boolean();
 
-        $handler = $this->getHandlerSpy('newrelic_end_transaction', [
+        $handler = $this->createHandlerSpy('newrelic_end_transaction', [
             $ignore,
         ]);
 
@@ -400,7 +400,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->getBrowserTimingFooter($includeTags);
     }
@@ -412,7 +412,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $includeTags = $faker->boolean();
         $result = $faker->text();
 
-        $handler = $this->getHandlerSpy(
+        $handler = $this->createHandlerSpy(
             'newrelic_get_browser_timing_footer',
             [
                 $includeTags,
@@ -434,7 +434,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->getBrowserTimingHeader($includeTags);
     }
@@ -446,7 +446,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $includeTags = $faker->boolean();
         $result = $faker->text();
 
-        $handler = $this->getHandlerSpy(
+        $handler = $this->createHandlerSpy(
             'newrelic_get_browser_timing_header',
             [
                 $includeTags,
@@ -461,7 +461,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testIgnoreApdex()
     {
-        $handler = $this->getHandlerSpy('newrelic_ignore_apdex');
+        $handler = $this->createHandlerSpy('newrelic_ignore_apdex');
 
         $agent = new Agent($handler);
 
@@ -470,7 +470,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
     public function testIgnoreTransaction()
     {
-        $handler = $this->getHandlerSpy('newrelic_ignore_transaction');
+        $handler = $this->createHandlerSpy('newrelic_ignore_transaction');
 
         $agent = new Agent($handler);
 
@@ -486,7 +486,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->nameTransaction($name);
     }
@@ -500,7 +500,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->nameTransaction($name);
     }
@@ -513,7 +513,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $result = $faker->boolean();
 
-        $handler = $this->getHandlerSpy(
+        $handler = $this->createHandlerSpy(
             'newrelic_name_transaction',
             [
                 $name,
@@ -535,7 +535,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->noticeError($message);
     }
@@ -549,7 +549,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->noticeError($message);
     }
@@ -561,7 +561,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $message = $faker->sentence();
         $exception = new \InvalidArgumentException($faker->sentence());
 
-        $handler = $this->getHandlerSpy('newrelic_notice_error', [
+        $handler = $this->createHandlerSpy('newrelic_notice_error', [
             $message,
             $exception,
         ]);
@@ -587,7 +587,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
             $faker->words()
         );
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->recordCustomEvent(
             $name,
@@ -611,7 +611,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
             $faker->words()
         );
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->recordCustomEvent(
             $name,
@@ -628,7 +628,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $name = $faker->word;
         $attributes = $faker->words();
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->recordCustomEvent(
             $name,
@@ -654,7 +654,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
             $key => $value,
         ];
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->recordCustomEvent(
             $name,
@@ -672,7 +672,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
             $faker->words()
         );
 
-        $handler = $this->getHandlerSpy('newrelic_record_custom_event', [
+        $handler = $this->createHandlerSpy('newrelic_record_custom_event', [
             $name,
             $attributes,
         ]);
@@ -696,7 +696,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $license = $faker->sentence();
         $xmit = $faker->boolean();
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->setAppname(
             $name,
@@ -719,7 +719,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $license = $faker->sentence();
         $xmit = $faker->boolean();
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->setAppname(
             $name,
@@ -742,7 +742,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $name = $faker->word;
         $xmit = $faker->boolean();
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->setAppname(
             $name,
@@ -765,7 +765,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $name = $faker->word;
         $license = $faker->sentence();
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->setAppname(
             $name,
@@ -784,7 +784,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $result = $faker->boolean();
 
-        $handler = $this->getHandlerSpy(
+        $handler = $this->createHandlerSpy(
             'newrelic_set_appname',
             [
                 $name,
@@ -808,7 +808,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->setUserAttributes($user);
     }
@@ -824,7 +824,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $user = $this->getFaker()->word;
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->setUserAttributes(
             $user,
@@ -846,7 +846,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
         $user = $faker->word;
         $account = $faker->word;
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->setUserAttributes(
             $user,
@@ -865,7 +865,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $result = $faker->boolean();
 
-        $handler = $this->getHandlerSpy(
+        $handler = $this->createHandlerSpy(
             'newrelic_set_user_attributes',
             [
                 $user,
@@ -889,7 +889,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->startTransaction($appName);
     }
@@ -903,7 +903,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class);
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->startTransaction($appName);
     }
@@ -919,7 +919,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $appName = $this->getFaker()->word;
 
-        $agent = new Agent($this->getHandlerMock());
+        $agent = new Agent($this->createHandlerMock());
 
         $agent->startTransaction(
             $appName,
@@ -936,7 +936,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
 
         $result = $faker->boolean();
 
-        $handler = $this->getHandlerSpy(
+        $handler = $this->createHandlerSpy(
             'newrelic_start_transaction',
             [
                 $name,
@@ -953,7 +953,7 @@ class AgentTest extends \PHPUnit_Framework_TestCase
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject|Handler\Handler
      */
-    private function getHandlerMock()
+    private function createHandlerMock()
     {
         return $this->createMock(Handler\Handler::class);
     }
@@ -965,9 +965,9 @@ class AgentTest extends \PHPUnit_Framework_TestCase
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|Handler\Handler
      */
-    private function getHandlerSpy($functionName, array $arguments = [], $result = null)
+    private function createHandlerSpy($functionName, array $arguments = [], $result = null)
     {
-        $handler = $this->getHandlerMock();
+        $handler = $this->createHandlerMock();
 
         $handler
             ->expects($this->once())
