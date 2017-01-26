@@ -14,13 +14,6 @@ use Refinery29\NewRelic\Handler\Handler;
 
 class DefaultHandlerTest extends \PHPUnit_Framework_TestCase
 {
-    public function testIsFinal()
-    {
-        $reflection = new \ReflectionClass(DefaultHandler::class);
-
-        $this->assertTrue($reflection->isFinal());
-    }
-
     public function testImplementsHandlerInterface()
     {
         $reflection = new \ReflectionClass(DefaultHandler::class);

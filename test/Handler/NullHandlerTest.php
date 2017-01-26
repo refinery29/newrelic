@@ -14,13 +14,6 @@ use Refinery29\NewRelic\Handler\NullHandler;
 
 class NullHandlerTest extends \PHPUnit_Framework_TestCase
 {
-    public function testIsFinal()
-    {
-        $reflection = new \ReflectionClass(NullHandler::class);
-
-        $this->assertTrue($reflection->isFinal());
-    }
-
     public function testImplementsHandlerInterface()
     {
         $reflection = new \ReflectionClass(NullHandler::class);
