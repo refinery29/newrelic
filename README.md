@@ -4,10 +4,12 @@
 [![Code Climate](https://codeclimate.com/github/refinery29/newrelic/badges/gpa.svg)](https://codeclimate.com/github/refinery29/newrelic)
 [![Test Coverage](https://codeclimate.com/github/refinery29/newrelic/badges/coverage.svg)](https://codeclimate.com/github/refinery29/newrelic/coverage)
 [![Issue Count](https://codeclimate.com/github/refinery29/newrelic/badges/issue_count.svg)](https://codeclimate.com/github/refinery29/newrelic)
+[![Latest Stable Version](https://poser.pugx.org/refinery29/newrelic/v/stable)](https://packagist.org/packages/refinery29/newrelic)
+[![Total Downloads](https://poser.pugx.org/refinery29/newrelic/downloads)](https://packagist.org/packages/refinery29/newrelic)
 
-This repository provides a wrapper around the [New Relic PHP API](https://docs.newrelic.com/docs/agents/php-agent/configuration/php-agent-api), 
+This repository provides a wrapper around the [New Relic PHP API](https://docs.newrelic.com/docs/agents/php-agent/configuration/php-agent-api),
 inspired by [`intouch/newrelic`](https://github.com/In-Touch/newrelic).
- 
+
 ## Installation
 
 Run
@@ -28,7 +30,7 @@ $agent->setAppname('Refinery29 API');
 $agent->nameTransaction('POST /entries');
 ```
 
-:bulb: Ideally, you should create one instance of `Refinery29\NewRelic\Agent`, share it using a container, 
+:bulb: Ideally, you should create one instance of `Refinery29\NewRelic\Agent`, share it using a container,
 and inject it as a dependency into objects wishing to consume it.
 
 ## Handlers
@@ -36,7 +38,7 @@ and inject it as a dependency into objects wishing to consume it.
 If you don't inject a handler, `Refinery29\NewRelic\Agent` creates an instance of `Refinery29\NewRelic\Handler\DefaultHandler`
 and uses it to make calls to the New Relic API.
 
-You may want to inject a `NullHandler` if you don't want to actually make calls to the New Relic API, for example, 
+You may want to inject a `NullHandler` if you don't want to actually make calls to the New Relic API, for example,
 in non-production environments:
 
 ```php
