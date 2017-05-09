@@ -225,7 +225,7 @@ interface AgentInterface
      * Instead, store the transaction as /product/*, or use something significant about the code itself to name the
      * transaction, such as /Product/view. The total number of unique transaction names should be less than 1000.
      * Exceeding that is not recommended.
-
+     *
      * @param string $name
      *
      * @throws \InvalidArgumentException
